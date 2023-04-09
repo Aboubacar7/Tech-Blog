@@ -1,0 +1,45 @@
+/* Dashboard-Style*/
+
+.header-2 {
+    background-color: rgb(99, 60, 60);
+    height: 90px;
+}
+.ul-list-2{
+    display: flex;
+}
+
+#btn-id-3 {
+    border-radius: 5px;
+    border: 0;
+    margin-left: 4em;
+    margin-top: 20px;
+    font-size: larger;
+    background-color: rgb(231, 205, 175);
+    font-size: 2em;
+    box-shadow: 10px 5px 5px rgb(219, 156, 68)
+}
+
+.header-2 a {
+    text-decoration: none;
+    color: antiquewhite;
+    margin: 25px;
+}
+
+.foot-2 {
+    display: flex;
+    justify-content: center;
+
+}
+.btn a{
+    border-radius: 5px;
+    border: 0;
+    font-size: larger;
+    background-color: bisque;
+    font-size: 2em;
+    margin-top: 640px;
+    color: black;
+    text-decoration: none;
+}
+.btn {
+    margin-top: 640px;
+}
