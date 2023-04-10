@@ -1,12 +1,4 @@
-const postContent = document.querySelector('.post-content');
-
-postContent.addEventListener('click', () =>  {
-    const title = document.querySelector('#title').value.trim();
-    const content = document.querySelector('#body').value.trim();
-    document.location.replace('/edit')
-    const editTitle = post.paramsreq.params.id
-})
-    
+const postId = document.querySelector('input[name="post-id"]').value.trim();
 
 
 const editPostHandler = async (event) => {
@@ -16,9 +8,10 @@ const editPostHandler = async (event) => {
     const newContent = document.querySelector('#body').value.trim();
   
     if (title && content) {
-      const response = await fetch('/api/posts/:id', {
+      const response = await fetch(`/api/posts/${postId}`, {
         method: 'PUT',
-        body: JSON.stringify({ newTitle, newContent }),
+       newTitle,
+       newContent,
         headers: { 'Content-Type': 'application/json' },
       });
   
