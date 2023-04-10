@@ -2,16 +2,19 @@
     {
         "title": "Object-Relational Mapping",
         "body": "I have really lob=ved learning about ORMs. It's really simplified the way I create queries in SQL!",
-        "create_On": "5/8/2020"
+        "create_On": "5/8/2020",
+        "user_id": "3"
     },
     {
         "title": "Why MVC is so important",
         "body": " MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data,the view layer for design, and the controller layer for application logic ",
-        "create_On": "5/8/2020"
+        "create_On": "5/8/2020",
+        "user_id": "2"
     },
     {
         "title": "Authentication vs. Authorization",
         "body": "There is a difference between authentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed access to the svstem.",
-        "create_On": "5/8/2070"
+        "create_On": "5/8/2070",
+        "user_id": "1"
     }
 ]

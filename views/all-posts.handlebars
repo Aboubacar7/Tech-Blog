@@ -1,12 +1,12 @@
 {{#each posts as |post|}}
- <div class="content" style=" border: solid;  margin-top: 20px;
+<div class="content" style=" border: solid;  margin-top: 20px;
     margin-left: 50px;
     width: 800px; border-style: ; ">
-        <div class="title" style=" display: flex;
+    <div class="title" style=" display: flex;
         justify-content: space-between; background-color: rgb(112, 66, 66); align-items: center; color: antiquewhite;">
-            <div style="font-size: x-large;"> {{post.title}} </div>
-            <span style="font-size: 15px;">Posted by {{user.username}}on {{format_time post.create_on}}</span>
-        </div>
-        <p>{{post.body}}</p>
+        <div style="font-size: x-large;"> {{post.title}} </div>
+        <span style="font-size: 15px;">Posted by {{user.username}} on {{format_date post.create_on}}</span>
     </div>
-    {{#each}}
+    <p>{{post.body}}</p>
+</div>
+{{/each}}
