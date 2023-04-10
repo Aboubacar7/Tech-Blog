@@ -5,6 +5,12 @@ class Post extends Model { }
 
 Post.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         title: DataTypes.STRING,
         body: DataTypes.STRING,
         create_0n: DataTypes.DATE

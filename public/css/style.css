@@ -45,10 +45,11 @@ body{
 #btn-id-2{
     border-radius: 5px;
     border: 0;
-    font-size: larger;
+    padding: 15px 30px;
     background-color: bisque;
-    font-size: 2em;
+    font-size: 1em;
     margin-top: 350px;
+    cursor: pointer;
 }
 
 
