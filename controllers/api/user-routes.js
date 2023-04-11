@@ -17,29 +17,32 @@ router.post('/', (req, res) => {
     })
 })
 router.post('/login', async (req, res) => {
+  
     try {
       const dbUserData = await User.findOne({
         where: {
-          user: req.body.username,
+          username: req.body.username,
         },
       });
   
       if (!dbUserData) {
+        console.log('user not found')
         res
           .status(400)
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
-  
+      console.log(req.body.password)
       const validPassword = await dbUserData.checkPassword(req.body.password);
   
       if (!validPassword) {
+        console.log('password incorect')
         res
           .status(400)
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
-  
+      console.log('login correct')
       req.session.save(() => {
         req.session.loggedIn = true;
         console.log(
@@ -51,7 +54,7 @@ router.post('/login', async (req, res) => {
           .status(200)
           .json({ user: dbUserData, message: 'You are now logged in!' });
       });
-      res.render('dashboard')
+      
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
