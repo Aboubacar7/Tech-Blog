@@ -16,10 +16,12 @@
         <ul class="ul-list">
             <li><a href="/">Home</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
+            {{#if isdashboard}}
+
+            {{else}}
             <li><a href="/login">Login</a></li>
-            {{#if logged_in}}
-            <li><a id="logout" href="#">Logout</a></li>
             {{/if}}
+            <li><a id="logout" href="">Logout</a></li>
         </ul>
 
         {{#if isdashboard}}
@@ -46,6 +48,7 @@
     </footer>
     {{/if}}
     <script src="/js/logout.js"></script>
+    <script src="/js/addPost.js"></script>
 
 </body>
 

@@ -1,4 +1,4 @@
-const postId = document.querySelector('input[name="post-id"]').value.trim();
+const postId = document.querySelector('input[name="post-id"]');
 
 
 const editPostHandler = async (event) => {
@@ -10,8 +10,8 @@ const editPostHandler = async (event) => {
     if (title && content) {
       const response = await fetch(`/api/posts/${postId}`, {
         method: 'PUT',
-       newTitle,
-       newContent,
+        newTitle,
+        newContent,
         headers: { 'Content-Type': 'application/json' },
       });
   

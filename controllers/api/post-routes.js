@@ -2,6 +2,15 @@ const router = require('express').Router()
 const { Post, User } = require('../../models')
 
 
+router.get('/newpost', async (req, res) => {
+    
+     res.render('add-post')
+     .catch(err => res.json(err))
+  
+})
+
+
+
 
 router.post('/', async (req, res) => {
     try {
@@ -10,6 +19,7 @@ router.post('/', async (req, res) => {
             body: req.body.body
         });
         res.status(200).json(dbPostData)
+        
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

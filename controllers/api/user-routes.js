@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id
             req.session.username = userData.username
-            req.session.loggedIn = true
+            req.session.logged_In = true
             
             res.json(userData)
         })
@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
       }
       console.log('login correct')
       req.session.save(() => {
-        req.session.loggedIn = true;
+        req.session.logged_In = true;
         console.log(
           '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
           req.session.cookie
@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
   
 
 router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
+    if (req.session.logged_In) {
       req.session.destroy(() => {
         res.status(204).end();
       });
