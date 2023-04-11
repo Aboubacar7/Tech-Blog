@@ -2,12 +2,13 @@ const router = require('express').Router()
 const { Post, User } = require('../../models')
 
 
-router.get('/newpost', async (req, res) => {
-    
-     res.render('add-post')
-     .catch(err => res.json(err))
-  
-})
+router.get('/newpost',  async (req, res) => {
+    try {
+        res.render('add-post');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 
