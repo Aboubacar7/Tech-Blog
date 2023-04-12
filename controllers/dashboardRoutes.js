@@ -7,7 +7,7 @@ router.get('/', withAuth,  async (req, res) => {
     try {
         res.render('dashboard', {
             isdashboard: true,
-            logged_in: req.session.logged_in,
+            logged_In: req.session.logged_In,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -29,7 +29,7 @@ router.get('/post/:id', async (req, res) => {
   
       res.render('edit', {
         posts: posts,
-        logged_in: req.session.logged_in
+        logged_In: req.session.logged_In
       });
     } catch (err) {
       res.status(500).json(err);

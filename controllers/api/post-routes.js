@@ -4,13 +4,32 @@ const { Post, User } = require('../../models')
 
 router.get('/newpost',  async (req, res) => {
     try {
-        res.render('add-post');
+        res.render('add-post', {
+            isnewpost: true,
+        });
+        
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+router.get('/editpost',  async (req, res) => {
+    try {
+        res.render('edit');
+        
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
+router.get('/comment',  async (req, res) => {
+    try {
+        res.render('add-comment');
+        
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 router.post('/', async (req, res) => {
