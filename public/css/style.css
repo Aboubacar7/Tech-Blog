@@ -17,16 +17,20 @@ body{
 
 }
 
-.header a {
+.header ul li a {
     text-decoration: none;
     color: antiquewhite;
     margin: 25px;
 }
 
-
+.nav a {
+    text-decoration: none;
+    color: black;
+}
 
 #btn-id {
     border-radius: 5px;
+    text-decoration: none;
     border: 0;
     margin-left: 4em;
     margin-top: 12px;
@@ -61,5 +65,3 @@ body{
     margin-top: 300px;
     cursor: pointer;
 }
-
-

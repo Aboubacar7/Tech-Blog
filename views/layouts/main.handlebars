@@ -24,32 +24,25 @@
             <li><a id="logout" href="">Logout</a></li>
         </ul>
 
-        {{#if isdashboard}}
-        <div class="nav">
-            <button id="btn-id">Dashboard</button>
-        </div>
-        {{else}}
         <div class="nav">
             <button id="btn-id">The Tech Blog</button>
         </div>
-        {{/if}}
+      
     </header>
 
     <main>
         {{{body}}}
     </main>
-    {{#if isdashboard}}
-    <footer class="foot">
-        <button id="btn-id-2" style="" ><a href="/api/posts/newpost"> Add a New Post</a></button>
-    </footer> 
-    {{else}}
+    
     <footer class="foot">
         <button id="btn-id-3">+ Tech Blog </button>
     </footer>
-    {{/if}}
+   
     <script src="/js/logout.js"></script>
-    <script src="/js/addPost.js"></script>
+    {{!-- <script src="/js/addPost.js"></script> --}}
 
 </body>
 
 </html>
+
+{{!-- <a href="/api/posts/newpost"></a> --}}

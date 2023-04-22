@@ -1,13 +1,15 @@
+<div class="posts">
 {{#each posts as |post|}}
-<div class="post-content" style=" border: solid;  margin-top: 20px;
-    margin-left: 50px;
-    width: 800px; border-style: ; ">
+<a href="/api/posts/comment/{{id}}" style="text-decoration: none !important;" ><div class="post-content" style=" border: solid; border-color:black ; margin-top: 20px; margin-left: 50px;  width: 800px; border-style: ; ">
     <div class="title" style=" display: flex;
         justify-content: space-between; background-color: rgb(112, 66, 66); align-items: center; color: antiquewhite;">
         <div style="font-size: x-large;"> {{post.title}} </div>
-        <span style="font-size: 15px;">Posted by {{user.username}} on {{format_date post.create_on}}</span>
+        <span style="font-size: 15px;">Posted by {{user.username}} on {{format_date createdAt}}</span>
     </div>
-    <p>{{post.body}}</p>
+    <p style="color:black">{{post.body}}</p>
 </div>
-<script src="/js/edit.js"></script>
+</a>
+{{!-- <script src="/js/edit.js"></script> --}}
+{{!-- <script src="/js/comment.js"></script> --}}
 {{/each}}
+</div>

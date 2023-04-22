@@ -4,24 +4,24 @@
         <div style="font-size: 30px; background-color: rgb(112, 66, 66)"> Edit Post </div>
         <form class="edit-post" style="background-color: rgb(165, 190, 190); padding-top: 5px; ">
             <div class="form-group text" style="margin-left: 20px; ">
-                <input type="hidden" name="post-id" value="{{post.id}}" />
+                <input type="hidden" name="post-id" value="{{posts.id}}" />
 
                 <label for="Title" class="text-light" style="display: block; ">Title</label>
 
                 <input class="form-input-1" type="text" style="width: 700px; padding: 6px ; writing-mode: vertical-rl;"
-                    id="title" value="{{post.title}}" />
+                    id="title" value="{{posts.title}}" />
             </div>
             <div class="form-group text" style="margin-left: 20px;">
                 <label for="content" class="text-light" style="display: block;  ">Content</label>
                 <input class="form-input-2" type="text" style="width: 700px; padding: 30px ; writing-mode: vertical-rl;"
-                    id="body" value="{{post.body}}" />
+                    id="body" value="{{posts.body}}" />
             </div>
             <div class="form-group" style="margin-left: 20px;">
                 <button class=" btn-primary m-2" id="update-btn" type="submit" style="width: 700px
                 ; padding: 7px; margin-top: 17px;">Update Post</button>
             </div>
             <div class="form-group" style="margin-left: 20px;">
-                <button class=" btn-primary m-2" id="delete-btn" type="submit" style="width: 700px
+                <button class=" btn-primary m-2" id="delete-btn" style="width: 700px
                 ; padding: 7px; margin-top: 17px;">Delete</button>
             </div>
 

@@ -8,7 +8,13 @@ Comment.init(
         body: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        // post_id: {
+        //     references: {
+        //         model: 'post',
+        //         key: 'id'
+        //     }
+        // }
     },
     {
         sequelize
