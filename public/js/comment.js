@@ -8,15 +8,15 @@ const addCommentHandler = async (event) => {
     const newContent = document.querySelector('#new-body').value.trim();
 
     if (newContent) {
-        const response = await fetch(`/api/posts/comment/`, {
+        const response = await fetch(`/api/posts/comment/:postid`, {
             method: 'POST',
             body: JSON.stringify({postId, body: newContent }),
             headers: { 'Content-Type': 'application/json' },
         });
 
-        if (!response.ok) {
-        //     document.location.replace('/post');
-        // } else {
+        if (response.ok) {
+            document.location.replace(`/api/posts/comment/${postId}`);
+        } else {
             alert('Add comment failed!');
         }
     }

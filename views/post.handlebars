@@ -10,17 +10,17 @@
     <p style="color:black">{{posts.body}}</p>
 </div>
 
-{{#if posts.comments}}
+{{#if comments}}
 <h3>comment</h3>
-{{#each posts.comments}}
+{{#each comments}}
 <div>
-    <p>{{body}}</p>
-    <p>{{posts.user.username}}. {{format_date posts.createdAt}}</p>
+    <p>{{dataValues.body}}</p>
+    <p>{{ dataValues.user_id}}. {{format_date  dataValues.createdAt}}</p>
 </div>
 {{/each}}
 {{/if}}
 
-<div class="content" style=" border: solid;   width: 800px; height: auto; margin-top: 20px; margin-left: 50px">
+<div class="content" style=" border: solid;   width: 800px; height: auto; margin-top: 20px; margin-left: 50px" >
     <div class="title"
         style=" display: block; justify-content: space-between; align-items: center; color: rgb(13, 13, 12);">
         <div style="font-size: 30px; background-color: rgb(112, 66, 66)"></div>
@@ -33,8 +33,7 @@
                 </textarea>
             </div>
             <div class="form-group" style="margin-left: 20px; margin-top: 50px;">
-                <button class=" btn-primary m-2 create-comment-btn" id="create-btn" style="width: 700px
-                ; padding: 8px; margin-top: 7px;">Create</button>
+                <button class=" btn-primary m-2 create-comment-btn" id="create-btn" style="width: 700px; padding: 8px; margin-top: 7px; ">Create</button>
             </div>
 
         </form>

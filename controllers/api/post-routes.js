@@ -13,26 +13,26 @@ const { Post, User,Comment } = require('../../models')
 //     }
 // });
 
-// router.get('/editpost', async (req, res) => {
-//     try {
-//         res.render('edit');
+router.get('/post', async (req, res) => {
+    try {
+        res.render('post');
 
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
-router.post('/comment/', async (req, res) => {
+router.post('/comment/:postid', async (req, res) => {
     try {
         console.log(req.body.body)
-        console.log(req.session.user_id)
-        const commentData = await Comment.create({ body: req.body.body, user_id: req.session.user_id })
-        const postsComment = commentData.get({ plain: true });
+        console.log(req.body.user_id)
+        const commentData = await Comment.create({ body: req.body.body, user_id: req.body.user_id, post_id: req.body.postid   })
+        // const postsComment = commentData.get({ plain: true });
         res.status(200).json(commentData)
 
-        res.render('post', {
-            postsComment: postsComment
-        })
+        // res.render('post', {
+        //     postsComment: postsComment
+        // })
     }
     catch (err) {
         res.status(500).json(err)
@@ -50,9 +50,16 @@ router.get('/comment/:id', async (req, res) => {
         });
 
         const posts = postData.get({ plain: true });
+
+        const commentData = await Comment.findAll(req.body,{
+             where: {
+                 id: req.params.id
+             }
+        });
         console.log(posts)
+        console.log(commentData)
         res.render('post', {
-            posts: posts
+            posts: posts, comments:commentData
         });
     } catch (err) {
         res.status(500).json(err);
