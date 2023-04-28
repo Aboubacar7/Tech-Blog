@@ -3,16 +3,6 @@ const { User, Comment, Post } = require('../models');
 const withAuth = require('../utils/auth');
 const { route } = require('./api');
 
-// router.get('/', withAuth,  async (req, res) => {
-//     try {
-//         res.render('dashboard', {
-//             isdashboard: true,
-//             logged_In: req.session.logged_In,
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
 
 router.get('/', withAuth, async (req, res) => {
     try {

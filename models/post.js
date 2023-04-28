@@ -10,13 +10,7 @@ Post.init(
         body: DataTypes.STRING,
         create_0n: DataTypes.DATE,
 
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //       model: 'user',
-        //       key: 'id',
-        //     },
-        //   },
+       
     },
     
     {
