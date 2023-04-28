@@ -1,0 +1,25 @@
+<div class="content mt-5 ml-5 " style=" border: solid;   width: 800px; height: 308px; ">
+    <div class="title"
+        style=" display: block; justify-content: space-between; align-items: center; color: rgb(13, 13, 12);">
+        <div style="font-size: 30px; background-color: rgb(112, 66, 66)"> Edit Comments </div>
+        <form class="edit-post" style="background-color: rgb(165, 190, 190); padding-top: 5px; ">
+             <input type="hidden" name="comments-id" value="{{comments.id}}" />
+            <div class="form-group text" style="margin-left: 20px;">
+                <label for="content" class="text-light" style="display: block;  ">Body</label>
+                <input class="form-input-2" type="text" style="width: 700px; padding: 30px ; writing-mode: vertical-rl;"
+                    id="body" value="{{comments.body}}" />
+            </div>
+            <div class="form-group" style="margin-left: 20px;">
+                <button class=" btn-primary m-2" id="update-comment-btn" type="submit" style="width: 700px
+                ; padding: 7px; margin-top: 17px;">Update Post</button>
+            </div>
+            <div class="form-group" style="margin-left: 20px;">
+                <button class=" btn-primary m-2" id="delete-comment-btn" style="width: 700px
+                ; padding: 7px; margin-top: 17px;">Delete</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="/js/comment.js"></script>

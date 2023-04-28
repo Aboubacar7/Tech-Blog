@@ -12,6 +12,9 @@ const seedDatabase = async () => {
       returning: true
     });
     const posts = await Post.bulkCreate(postData);
+
+    // const comments = await Post.bulkCreate(postData);
+  
   
     // for (const { id } of users) {
     //   const newPost = await Post.create({

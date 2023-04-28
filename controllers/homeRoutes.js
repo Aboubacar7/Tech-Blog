@@ -4,18 +4,42 @@ const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
   try {
-    const dbpostData = await Post.findAll({
+    const dbpostData = await Post.findAll( {
       include: [
-        User
+        { 
+          model: User,
+          attributes: ['id', 'username'],
+        },
       ],
     });
     const posts = dbpostData.map((post) => post.get({ plain: true }));
-
+console.log(posts)
     res.render('all-posts', {
       posts: posts,
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.get('/comment/:id', async (req, res) => {
+  try {
+      const commentData = await Comment.findByPk(req.params.id, {
+          include: [
+              {
+                  model: User,
+                  attributes: ['id', 'username'],
+              },
+          ],
+      });
+
+      const comments = commentData.get({ plain: true });
+console.log(comments)
+      res.render('edit-comment', {
+        comments: comments,
+      });
+  } catch (err) {
+      res.status(500).json(err);
   }
 });
 

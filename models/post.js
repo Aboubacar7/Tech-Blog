@@ -5,10 +5,20 @@ class Post extends Model { }
 
 Post.init(
     {
+        
         title: DataTypes.STRING,
         body: DataTypes.STRING,
-        create_0n: DataTypes.DATE
+        create_0n: DataTypes.DATE,
+
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //       model: 'user',
+        //       key: 'id',
+        //     },
+        //   },
     },
+    
     {
         sequelize
     }

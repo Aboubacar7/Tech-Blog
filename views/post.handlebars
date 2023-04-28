@@ -10,17 +10,24 @@
     <p style="color:black">{{posts.body}}</p>
 </div>
 
-{{#if comments}}
+{{#if posts.Comments}}
 <h3>comment</h3>
-{{#each comments}}
-<div>
-    <p>{{dataValues.body}}</p>
-    <p>{{ dataValues.user_id}}. {{format_date  dataValues.createdAt}}</p>
-</div>
+{{#each posts.Comments as | comment|}}
+{{!-- <div style=" border: solid; border-color:black ; margin-top: 20px; margin-left: 50px;  width: 800px; border-style: ; ">
+    <p>{{comment.body}}</p>
+    <p>{{ req.session.user.username}}. {{format_date  comment.createdAt}}</p>
+</div> --}}
+<a href="/comment/{{id}}" style="text-decoration: none !important;"><div class="post-content" style=" border: solid; border-color:black ; margin-top: 20px; margin-left: 50px;  width: 800px; border-style: ; ">
+    <div class="title" style=" display: flex;
+        justify-content: space-between; background-color: rgb(112, 66, 66); align-items: center; color: antiquewhite; height: 20px;">
+    </div>
+    <p style="color:black">{{comment.body}}</p>
+    <p style="color: black;">{{ comment.user_id }}. {{format_date  comment.createdAt}}</p>
+</div></a>
 {{/each}}
 {{/if}}
 
-<div class="content" style=" border: solid;   width: 800px; height: auto; margin-top: 20px; margin-left: 50px" >
+<div class="content" style=" border: solid;   width: 800px; height: 261.5px; margin-top: 20px; margin-left: 50px; " >
     <div class="title"
         style=" display: block; justify-content: space-between; align-items: center; color: rgb(13, 13, 12);">
         <div style="font-size: 30px; background-color: rgb(112, 66, 66)"></div>
@@ -32,11 +39,11 @@
                     id="new-body">
                 </textarea>
             </div>
-            <div class="form-group" style="margin-left: 20px; margin-top: 50px;">
+            <div class="form-group" style="margin-left: 17px; margin-top: 50px; ">
                 <button class=" btn-primary m-2 create-comment-btn" id="create-btn" style="width: 700px; padding: 8px; margin-top: 7px; ">Create</button>
             </div>
 
         </form>
     </div>
 </div>
-<script src="/js/comment.js"></script>
+<script src="/js/addcomment.js"></script>

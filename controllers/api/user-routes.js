@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const session = require('express-session');
 const {User} = require('../../models')
 
 router.post('/signup', (req, res) => {
@@ -45,6 +46,8 @@ router.post('/login', async (req, res) => {
       console.log('login correct')
       req.session.save(() => {
         req.session.logged_In = true;
+        req.session.user = dbUserData.username;
+        req.session.user_id = dbUserData.id
         console.log(
           '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
           req.session.cookie

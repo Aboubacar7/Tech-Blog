@@ -1,18 +1,8 @@
 const router = require('express').Router()
 const { Post, User,Comment } = require('../../models')
+const withAuth = require('../../utils/auth')
 
-
-// router.get('/newpost', async (req, res) => {
-//     try {
-//         res.render('add-post', {
-
-//         });
-
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
+/* Get comments route*/
 router.get('/post', async (req, res) => {
     try {
         res.render('post');
@@ -21,52 +11,11 @@ router.get('/post', async (req, res) => {
         res.status(500).json(err);
     }
 });
+ 
 
-router.post('/comment/:postid', async (req, res) => {
-    try {
-        console.log(req.body.body)
-        console.log(req.body.user_id)
-        const commentData = await Comment.create({ body: req.body.body, user_id: req.body.user_id, post_id: req.body.postid   })
-        // const postsComment = commentData.get({ plain: true });
-        res.status(200).json(commentData)
-
-        // res.render('post', {
-        //     postsComment: postsComment
-        // })
-    }
-    catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-router.get('/comment/:id', async (req, res) => {
-    try {
-        const postData = await Post.findByPk(req.params.id, {
-            include: [
-                {
-                    model: User,
-                },
-            ],
-        });
-
-        const posts = postData.get({ plain: true });
-
-        const commentData = await Comment.findAll(req.body,{
-             where: {
-                 id: req.params.id
-             }
-        });
-        console.log(posts)
-        console.log(commentData)
-        res.render('post', {
-            posts: posts, comments:commentData
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.post('/', async (req, res) => {
+/* Create post*/
+router.post('/', withAuth, async (req, res) => {
+    console.log(req.session)
     try {
         const dbPostData = await Post.create({
             title: req.body.title,
@@ -74,6 +23,7 @@ router.post('/', async (req, res) => {
             user_id: req.session.user_id
         });
         res.status(200).json(dbPostData)
+        console.log(dbPostData)
 
     } catch (err) {
         console.log(err);
@@ -81,7 +31,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+/* Edit Post*/
+router.put('/:id', withAuth, async (req, res) => {
     console.log(req.params.id)
     console.log(req.body)
     try {
@@ -96,9 +47,9 @@ router.put('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 })
-
-router.delete('/:id', async (req, res) => {
-    // delete one product by its `id` value
+/* Delete Post*/
+router.delete('/:id', withAuth, async (req, res) => {
+    
     console.log("DELETED ID", req.params.id)
     try {
         const PostData = await Post.destroy({
@@ -111,6 +62,47 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+/* comment route*/
+
+/* Create new comment route*/
+router.post('/comment/:postid', withAuth, async (req, res) => {
+    try {
+        console.log("body ------------------",req.body.body)
+        console.log("user ------------------",req.session.user )
+        const commentData = await Comment.create({ body: req.body.body, post_id: req.body.postId, user_id: req.session.user_id, username: req.session.user })
+        res.status(200).json(commentData)
+    }
+    catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+/* Get commment by post_id route*/
+router.get('/comment/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                },
+                {
+                    model: Comment,
+                },
+            ],
+        });
+        const posts = postData.get({ plain: true });
+
+        console.log(posts)
+        res.render('post', {
+            posts
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 
 module.exports = router

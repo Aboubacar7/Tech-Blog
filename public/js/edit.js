@@ -49,12 +49,12 @@ document
     .addEventListener('click', deletetPostHandler);
 
 
-const addcommenthandler = async (event) => {
-    console.log('passed')
-    event.preventDefault()
+// const addcommenthandler = async (event) => {
+//     console.log('passed')
+//     event.preventDefault()
 
-}
+// }
 
-document
-    .querySelector(".post-content")
-    .addEventListener("click", addcommenthandler);
+// document
+//     .querySelector(".post-content")
+//     .addEventListener("click", addcommenthandler);

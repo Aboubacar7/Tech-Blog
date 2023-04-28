@@ -1,27 +1,51 @@
-let postId = document.querySelector('input[name="post-id"]').value.trim();
-console.log(postId)
 
-const addCommentHandler = async (event) => {
+ let commentId = document.querySelector('input[name="comments-id"]').value.trim();
+
+
+/* Edit comments  */
+const editCommentHandler = async (event) => {
     event.preventDefault();
 
-    // const newTitle = document.querySelector('#title').value.trim();
-    const newContent = document.querySelector('#new-body').value.trim();
+    const newBody = document.querySelector('#body').value.trim();
 
-    if (newContent) {
-        const response = await fetch(`/api/posts/comment/:postid`, {
-            method: 'POST',
-            body: JSON.stringify({postId, body: newContent }),
+    if (newBody) {
+        const response = await fetch(`/api/comments/${commentId}`, {
+            method: 'PUT',
+            body: JSON.stringify({commentId, content: newBody }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            document.location.replace(`/api/posts/comment/${postId}`);
+            /* Goes back and reload the page*/
+            window.location = document.referrer;
         } else {
-            alert('Add comment failed!');
+            alert('Edit/Delete failed!');
         }
     }
 };
 
 document
-    .querySelector('.create-comment-btn')
-    .addEventListener('click', addCommentHandler);
+    .querySelector('#update-comment-btn')
+    .addEventListener('click', editCommentHandler);
+
+/* Delete Post */
+const deletetCommentHandler = async (event) => {
+    event.preventDefault();
+    
+
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+       window.location= document.referrer;
+    } else {
+        alert('Edit/Delete failed!');
+    }
+};
+
+document
+    .querySelector('#delete-comment-btn')
+    .addEventListener('click', deletetCommentHandler);
+

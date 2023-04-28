@@ -1,6 +1,6 @@
-<div class="posts list-group">
+<div class="posts list-group justify-content-space-around;" style="padding-top: 20px;  padding-left:20px; " >
   {{#each posts}}
-    <a class="list-item flex-row justify-space-between" href="/dashboard/edit/{{id}}">
+    <a class="list-item flex-row justify-space-between" href="/dashboard/edit/{{id}}" style=" border:solid; border-color:black; color:black; background-color:darkgray; width: 1000px; display:flex; text-decoration: none !important; height:30px ; border-radius: 5px;">
       <span>{{title}}</span>
       <span>{{format_date createdAt}}</span>
     </a>
