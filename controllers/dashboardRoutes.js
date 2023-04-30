@@ -6,7 +6,7 @@ const { route } = require('./api');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-        const dbpostData = await Post.findAll({
+        const dbpostData = await Post.findAll( {
             include: [
                 User
             ],

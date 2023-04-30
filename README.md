@@ -40,4 +40,4 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 ### [GitHub Link](https://github.com/Aboubacar7/Tech-Blog) 
 
 
-### [Heroku Url](https://git.heroku.com/aboubacar-tech-blog.git)
+### [Heroku Url](https://aboubacar-tech-blog.herokuapp.com/)
