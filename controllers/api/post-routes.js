@@ -71,7 +71,9 @@ router.post('/comment/:postid', withAuth, async (req, res) => {
     try {
         console.log("body ------------------",req.body.body)
         console.log("user ------------------",req.session.user )
-        const commentData = await Comment.create({ body: req.body.body, post_id: req.body.postId, user_id: req.session.user_id, username: req.session.user })
+const userData = await User.findByPk(req.session.user_id)
+console.log(userData)
+        const commentData = await Comment.create({ body: req.body.body, post_id: req.body.postId, user_id: req.session.user_id, username: userData.username })
         res.status(200).json(commentData)
     }
     catch (err) {
